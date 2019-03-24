@@ -7,70 +7,122 @@ package es.unileon.prg.date;
  */
 
 public class Date {                         
-                                         
-                                         //Declaración de las variables
-  private int day;   //Valor del día
-  private int month;  //Valor del mes
-  private int year; //Valor del año
-
-
+/**
+ * 
+ * Valor del dia
+ *
+ * Valor del mes
+ *
+ * Valor de año
+ *
+ */                                       
+  private int day;   
+  private int month;  
+  private int year; 
   /**
-   *Constructor de la clase.Construye una fecha con el dia 1 del mes 1 del anio 2019
+   * Constructor de la clase.Construye una fecha con el dia 1 del mes 1 del anio 2019
    *
-  */
+   */
   public Date() {                
     this.day=1;
     this.month=1;
     this.year=2019;
   }
   /**
-   *Constructor de la clase.Construye un objeto de tipo Date
-   *@param day
+   *  Constructor de la clase.Construye un objeto de tipo Date
+   *  @param day
    *      Valor del dia
-   *@param month
+   *  @param month
    *      Valor del mes
-   *@param year
+   *  @param year
    *      Valor de anio
    *
-  */
+   */
   public Date(int day, int month, int year)throws DateException{
-    this.year=year;   //año correcto
     if (month<1 || month>12) {         //excepción si el mes no es válido
-        throw new DateException ("Mes " + month + " no valido, " + " Valores posibles entre 1 y 12");       
-    } 
+        throw new DateException ("Mes " + month + " no valido, " + " Valores posibles entre 1 y 12");
+    }       
     else if(day>this.daysOfMonth(month)) {
         throw new DateException ("Día " + day + " no valido, " + " Introduzca otro día");
-      }
-    this.month=month;    
+      } 
+      else {     
     this.day=day;
+    this.month=month;
+    this.year=year;
+      }
   }
-   /////////////////////////////////////
-  //Constructor para crear otra fecha//
- /////////////////////////////////////
+  /**
+   * Constructor de la clase. Construye otra fecha con los valores recibidos
+   * 
+   * @param otrafecha
+   *    objeto de tipo Date
+   */       
   public Date(Date otraFecha) {
     this.day=otraFecha.getDay();
     this.month=otraFecha.getMonth();
     this.year=otraFecha.getYear();
   }
-  public int getDay() {                //Retorna el día
+  /**
+   * Método para obtener el dia 
+   *
+   * @return
+   *    Devuelve el dia
+   */    
+  public int getDay() {               
   	return day;
   }
-  public void setDay(int day) {        //Modifica el valor del día
+  /**
+   * Método para establecer el dia 
+   *
+   * @param day
+   *    variable de tipo int
+   */    
+  public void setDay(int day) {        
     this.day=day;
-  }                      
-  public int getMonth() {	             //Retorna el mes
+  }
+  /**
+   * Método para obtener el mes 
+   *
+   * @return
+   *    Devuelve el mes
+   */                          
+  public int getMonth() {	             
   	return month;
   }
-  public void setMonth(int month) {    //Modifica el valor del mes
+  /**
+   * Método para establecer el mes 
+   *
+   * @param month
+   *    variable de tipo int
+   */    
+  public void setMonth(int month) {    
     this.month=month;
   }
-  public int getYear() {	             //Retorna el año
+  /**
+   * Método para obtener el año 
+   *
+   * @return
+   *    Devuelve el año
+   */    
+  public int getYear() {	             
   	return year;
   }
-  public void setYear(int year) {      //Modifica el valor del año
+  /**
+   * Método para establecer el año 
+   *
+   * @param year
+   *    variable de tipo int
+   */    
+  public void setYear(int year) {      
     this.year=year;
   }
-  public Date nextDay() {  //Constructor que interviene en los dias que faltan hasta final de mes
+  /**
+   * Constructor de la clase.Crea una fecha con el dia siguiente
+   *
+   * @return
+   *    Devuelve el dia siguiente.
+   */    
+  public Date nextDay() {  
     Date nextDay=null;
     int day;
     int month;
@@ -86,7 +138,6 @@ public class Date {
                 month=1;
                 year++;
               }
-
           }
       try {
         nextDay=new Date(day, month, year);
@@ -94,14 +145,21 @@ public class Date {
       finally {
         return nextDay;
       }
-      
-
   }
+
   ///////////////////////////
   //Métodos de tipo isSame//
   /////////////////////////
   /**
-  //Método isSameYear
+   * Método que compara dos objetos de tipo Date y determina si tienen el mismo anio
+   * 
+   * @param otro
+   *    Objeto de tipo Date
+   *
+   * @return
+   *    Devuelve el valor booleano true si ambos anios coinciden
+   *    Devuelve el valor booleano false si los anios son diferentes
+   *
   public boolean isSameYear(Date otro) {
     if(this.year==otro.getYear() ) {
       return true;
@@ -109,7 +167,16 @@ public class Date {
       return false;
     }
   }
-  //Método isSameMonth
+   
+   * Método que compara dos objetos de tipo Date y determina si tienen el mismo mes
+   * 
+   * @param otro
+   *    Objeto de tipo Date
+   *
+   * @return
+   *    Devuelve el valor booleano true si ambos meses coinciden
+   *    Devuelve el valor booleano false si los meses son diferentes
+   *
   public boolean isSameMonth(Date otro) {
     if(this.month==otro.getMonth() ) {
       return true;
@@ -117,39 +184,82 @@ public class Date {
       return false;
     }
   }
-  //Método isSameDay
+  
+   * Método que compara dos objetos de tipo Date y determina si tienen el mismo dia
+   * 
+   * @param otro
+   *    Objeto de tipo Date
+   *
+   * @return
+   *    Devuelve el valor booleano true si ambos dias coinciden
+   *    Devuelve el valor booleano false si los dias son diferentes
+   
   public boolean isSameDay(Date otro) {
     if(this.day==otro.getDay() ) {
       return true;
     }else {
       return false;
     }
-  }
-  */
-      
+  } 
+    */   
     //////////////////
    //Métodos isSame//
   //////////////////
 
-  //Método para comprobar si dos días son iguales
+  /**
+   * Método que compara dos objetos de tipo Date y determina si tienen el mismo dia
+   * 
+   * @param sameFecha
+   *    Objeto de tipo Date
+   *
+   * @return
+   *    Devuelve el valor booleano true si ambos dias coinciden
+   *    Devuelve el valor booleano false si los dias son diferentes
+   */
   public boolean isSameDay(Date sameFecha) {
     String day1=String.valueOf(day);
     String day2=String.valueOf(sameFecha.getDay());
     return day1.equals(day2);
   }
-  //Método para comprobar si dos mese son iguales
+  /**
+   * Método que compara dos objetos de tipo Date y determina si tienen el mismo mes
+   * 
+   * @param sameFecha
+   *    Objeto de tipo Date
+   *
+   * @return
+   *    Devuelve el valor booleano true si ambos meses coinciden
+   *    Devuelve el valor booleano false si los meses son diferentes
+   */
   public boolean isSameMonth(Date sameFecha) {
     String month1=String.valueOf(month);
     String month2=String.valueOf(sameFecha.getDay());
     return month1.equals(month2);
   } 
-  //Método para comprobar si dos años son iguales
+  /**
+   * Método para comparar dos objetos de tipo Date y determinar si el anio es igual
+   *
+   * @param sameFecha
+   *    Objeto de tipo Date
+   *
+   * @return
+   *     Devuelve el valor booleano true si las fechas coinciden  false 
+   *     en caso contrario
+   */
   public boolean isSameYear(Date sameFecha) {
     String year1=String.valueOf(year);
     String year2=String.valueOf(sameFecha.getDay());
     return year1.equals(year2);
   }
-  //Método isSame 
+  /**
+   * Método para comparar dos objetivos de tipo Date y comprobar si son iguales
+   * 
+   * @param sameFecha
+   *    objeto de tipo Date
+   *
+   * @return
+   *    Devuelve la comparacion entre las fechas
+   */
   public boolean isSame(Date sameFecha) {
     return (this.isSameDay(sameFecha) && this.isSameMonth(sameFecha) && this.isSameYear(sameFecha));
   }
@@ -158,7 +268,12 @@ public class Date {
    ////Métodos realizados con switch//
   /////////////////////////////////// 
 
-  //Método que retorna el nombre del mes
+  /**
+   * Método para obtener los meses del año
+   *
+   * @return
+   *    Devuelve el nombre del mes correspondiente
+   */  
   public String getNameOfMonth() {
     String mes=null;    //Inicio el nombre del mes(String) como vacio asginando el valor null
     switch(this.month) {
@@ -201,9 +316,17 @@ public class Date {
     }
     return mes;
   }
-  
-  public boolean isDayRight(int month) {   
-    boolean right=false;
+  /**
+   * Método que comprueba si el día introducido es correcto
+   *
+   * @param month
+   *    variable de tipo int
+   * @return
+   *    Devuelve el valor booleano true a excepcion de que el dia introducido
+   *    no se corecto, en ese caso, se devolverá false
+   */    
+  private boolean isDayRight() {   
+    boolean right=true;
     switch(month) {        
       case 1:  //next
       case 3:  //next
@@ -212,12 +335,12 @@ public class Date {
       case 8:  //next
       case 10: //next       
       case 12:
-        if(day>=1 && day<=31) {
+        if(day>0 && day<=31) {
           right=true;
         }
         break;
       case 2:
-        if(day>=1 && day<=28) {
+        if(day>0 && day<=28) {
           right=true;
         }
         break;
@@ -225,7 +348,7 @@ public class Date {
       case 6:
       case 9:
       case 11:
-        if(day>=1 && day<=30) {
+        if(day>0 && day<=30) {
           right=true;
         }
         break;
@@ -234,6 +357,28 @@ public class Date {
     }
     return right;
   }
+  /**
+   * Método que comprueba si el día introducido es correcto
+   *
+   * @param day
+   *    variable de tipo int
+   * @return
+   *    si el valor booleano es true
+   *    devuelve los dias del mes 
+   *    Adicion: Este método ha sido creado para obtener los dias restantes 
+   *             en un mes desde el día introducido
+   */    
+  private boolean isDayRight(int day) {
+    return (day>0 &&day<=this.daysOfMonth(month));
+  }
+  /**
+   * Método para conocer los dias de los meses del año
+   *
+   * @param month
+   *    variable de tipo int
+   * @return
+   *   Devuelve los dias del mes
+   */    
   public int daysOfMonth(int month) {   //Dias que tienen cada uno de los meses
     int day=0;
     switch(month) {    		
@@ -260,9 +405,21 @@ public class Date {
     }
     return day;
   }
+  /**
+   * Método que devuelve los días del mes introducido
+   *
+   * @return
+   *    Devuelve los días del mes introducido
+   */    
   public int daysOfMonth() {
     return this.daysOfMonth(this.month);
   }
+  /**
+   * Método para obtener la estación del mes
+   *
+   * @return
+   *    Devuelve la estación del mes
+   */    
   public String nameSeason() {
     String estacion=null;   //inicio el nombre de la estación con un valor vacio
       switch(this.month) {
@@ -317,8 +474,12 @@ public class Date {
     //////////////////////////////
    //Métodos realizados con for//
   ////////////////////////////// 
-
-  //Método que retorna los meses que faltan hasta el final del año
+  /**
+   * Método para obtener los mese que faltan hasta fin de año
+   *
+   * @return
+   *    Devuelve los meses restantes 
+   */    
   public String monthsLeft() {
     Date rest=new Date(this);
       StringBuffer monthsLeft= new StringBuffer();
@@ -328,17 +489,28 @@ public class Date {
         }
         return monthsLeft.toString();
     }
-  //Método que retorna los dias que faltan del mes
+  /**
+   * Método que retorna los dias que faltan del mes
+   *
+   * @return 
+   *    Devuelve los dias que faltan para acabar el mes desde el día introducido
+   *
+   */
   public String daysLeft() {
-    Date rest=nextDay();
+    Date next=nextDay();
     StringBuffer daysLeft=new StringBuffer();
-      for(int i=rest.getDay();isDayRight(i);i++) {
-        rest.setDay(i);
-        daysLeft.append(rest.toString() + " "); 
+      for(int i=next.getDay();isDayRight(i);i++) {
+        next.setDay(i);
+        daysLeft.append(next.toString() + " "); 
       }
       return daysLeft.toString();
   }
-  //Método que retorna los meses con los mismo días
+  /**
+   * Método que obtiene los meses que tienen los mismos días
+   *
+   * @return
+   *    Devuelve todos los meses con la misma cantidad de días
+   */    
   public String sameDays() {
     Date same= new Date(this);
     StringBuffer meses= new StringBuffer();
@@ -351,7 +523,12 @@ public class Date {
           }
     return meses.toString();
   }
-  //Método que cuenta desde el primer dia hasta el dia introducido
+  /**
+   * Método que cuenta desde el primer dia hasta el dia introducido
+   *
+   * @return
+   *    Devuelve el sumatorio de días hasta el dia previo introducido
+   */    
   public int getCountDays() {
     int counter;                  //Declaro el contador de días
     counter=0;                    // Lo inicializo en 0
@@ -371,8 +548,15 @@ public class Date {
    ////////////////////////////////////////
   //Métodos realizados con while~Dowhile//
  ////////////////////////////////////////
-
-  //Nombre de los días de la semana
+  /**
+   * Método para conocer los nombres de los días de la semana 
+   *
+   * @param day
+   *    variable de tipo int
+   *
+   * @return
+   *    Devuelve el el nombre del día de la semana
+   */    
   private String nameDaysOfWeek(int day) {
     String nombre= " ";
     switch(day) {
@@ -400,9 +584,12 @@ public class Date {
     }
     return nombre;
   }
-
-  //Método que cuenta el número de intentos ~DoWhile~
-
+  /**
+   * Método para obtener el número de intentos para generar dos fechas iguales (realizado con Dowhile)
+   *
+   * @return
+   *    Devuelve el número de intentos
+   */    
   public int attempsCounterDate1() {
     int intentos, day,month,year;
     intentos=0;
@@ -419,9 +606,12 @@ public class Date {
          return intentos;
       }
   }
-
-  //Mismo método que el de arriba para obtener la otra fecha realizado con while
-
+  /**
+   * Método que cuenta el número de intentos para generar dos fechas iguales(realizado con while)
+   *
+   * @return
+   *    Devuelve el número de intentos
+   */    
   public int attempsCounterDate2() {
     int intentos, day,month,year;
     intentos=0;
@@ -452,23 +642,19 @@ public class Date {
    *
    *@return 
    *        Devuelve el nombre del dia de la semana
-   *
    */
-
   public String guessName(int day1) {
     int numeroDia;
     numeroDia=(getCountDays() %7 + day1)%7;
       return nameDaysOfWeek(numeroDia);
   }
   /**Método para imprimir la fecha
-   *@Override
+   * @Override
    *
-  */
+   * @return
+   *    Devuelve la fecha en formato String
+   */
   public String toString() {
     return this.day + "/" + this.month + "/" + this.year;
   }
 }
-
-
-  
-           
